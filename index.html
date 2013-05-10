@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>NCIP &hearts; Open Source</title>
+    <title>NCIP Open Source</title>
     <link rel="stylesheet" type="text/css" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
@@ -117,7 +117,17 @@
               });
 
               $.each(repos, function (i, repo) {
-                addRepo(repo);
+                console.log(repo.name);
+                var excludeRepo = false;
+                if( repo.name.indexOf("-docs") == repo.name.length - 5 ) {
+                  excludeRepo = true;
+                  }
+                if( repo.name.indexOf("-data") == repo.name.length - 5 ) {
+                  excludeRepo = true;
+                  }
+                if( !excludeRepo ) {
+                  addRepo(repo);
+                  }
               });
 
               // Sort by most-recently pushed to.
@@ -237,7 +247,7 @@
     <div id="wrapper" class="grid clearfix">
       <div id="main" class="grid-1">
         <div id="logo"><h1>NCIP Open Source</h1></div>
-        <h1>NCIP promotes open source software.</h1>
+        <h1>NCIP empowers Cancer Research with Open Source</h1>
         <p>Visit <a href="http://ncip.nci.nih.gov/">ncip.nci.nih.gov</a></p>
         <p><a href="https://github.com/NCIP/ncip.github.com/wiki/_pages">Wiki Pages</a></p>
       </div>
