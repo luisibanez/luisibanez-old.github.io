@@ -68,10 +68,13 @@
       }
 
       function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
+        var $repoElement = $("<li>")
+        var $item = $repoElement.addClass("repo grid-1 mycolor");
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
         $link.append($("<h2>").text(repo.name));
         $link.append($("<p>").text(repoDescription(repo)));
+        $repoElement.attr("border-right-style","solid");
+        $repoElement.attr("border-right-color",repo.triangle_color);
         $item.appendTo("#repos");
       }
 
@@ -107,7 +110,7 @@
                 repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
                 repo.hotness += weightForWatchers * repo.watchers / createdDelta;
                 var repoTemperatureColor = Math.floor(255.0*repo.hotness);
-                repo.triangle_color = "#"+(repoTemperatureColor).toString(16)+(102).toString(16)+(102).toString(16);
+                repo.triangle_color = "#"+(repoTemperatureColor).toString(16)+(0).toString(16)+(0).toString(16);
                 console.log(repo.hotness+repo.triangle_color);
               });
 
