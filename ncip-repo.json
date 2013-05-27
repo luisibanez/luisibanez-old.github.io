@@ -1,0 +1,51 @@
+[
+  {
+    "repo": "cagrid",
+    "group": "caGrid"
+  },
+  {
+    "repo": "cagrid-docs",
+    "group": "caGrid"
+  },
+  {
+    "repo": "cagrid-core",
+    "group": "caGrid"
+  },
+  {
+    "repo": "cagrid-general",
+    "group": "caGrid"
+  },
+  {
+    "repo": "cagrid-portal",
+    "group": "caGrid"
+  },
+  {
+    "repo": "cagrid-workflow",
+    "group": "caGrid"
+  },
+  {
+    "repo": "grid-incubation",
+    "group": "caGrid"
+  },
+  {
+    "repo": "taverna-cagrid",
+    "group": "caGrid"
+  },
+  {
+    "repo": "caB2B",
+    "group": "caGrid"
+  },
+  {
+    "repo": "cagrid-iphone-app",
+    "group": "caGrid"
+  },
+  {
+    "repo": "catrip",
+    "group": "caGrid"
+  },
+  {
+    "repo": "caobr",
+    "group": "caGrid"
+  },
+]
+
