@@ -109,7 +109,7 @@
                 var repoTemperatureColor = Math.floor(255.0*repo.hotness);
                 repo.triangle_color = "#"+(repoTemperatureColor).toString(16)+(102).toString(16)+(102).toString(16);
                 console.log(repo.hotness+repo.triangle_color);
-                var uri = "https://raw.github.com/NCIP/"+repo.name+"/master/README.md"
+                var uri = "https://raw.github.com/NCIP/"+repo.name+"/master/README.md?callback=?"
                 $.getJSON(uri, function (result) {
                   console.log(result);
                   });
