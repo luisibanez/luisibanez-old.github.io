@@ -147,7 +147,26 @@
           }
         });
       }
-      addRepos();
+      //  addRepos();
+
+      function addGroups(repoGroups) {
+        repoGroups = repoGroups || [];
+
+        var uri = "ncip-group.json?callback=?";
+
+        $.getJSON(uri, function (result) {
+          if (result.data && result.data.length > 0) {
+            repoGroups = repoGroups.concat(result.data);
+            addGroups(repoGroups);
+          }
+          else {
+            $(function () {
+              $("#num-repos").text(repoGroups.length);
+            });
+          }
+        })
+      }
+      addGroups();
 
       $.getJSON("https://api.github.com/orgs/ncip/members?callback=?", function (result) {
         var members = result.data;
