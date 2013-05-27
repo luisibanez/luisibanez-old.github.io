@@ -67,6 +67,15 @@
         $item.appendTo("#recently-updated-repos");
       }
 
+      function addGroupRepresentation(group) {
+        console.log(group.name);
+        var $item = $("<li>").addClass("group grid-1 " + (repo.language || '').toLowerCase());
+        var $link = $("<a>").attr("href", "http://luisibanez.github.io").appendTo($item);
+        $link.append($("<h2>").text(group.name));
+        $link.append($("<p>").text(group.description));
+        $item.appendTo("#repos");
+      }
+
       function addRepo(repo) {
         var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
@@ -162,6 +171,11 @@
           else {
             $(function () {
               $("#num-repos").text(repoGroups.length);
+
+              $.each(repoGroups.slice(0, 3), function (i, group) {
+                addGroupRepresentation(group);
+              });
+
             });
           }
         })
