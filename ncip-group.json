@@ -1,4 +1,4 @@
-[
+var ncip_groups = [
   {
     "name":"caGrid",
     "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines."
@@ -11,4 +11,4 @@
     "name":"caPortals",
     "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
   }
-]
+];

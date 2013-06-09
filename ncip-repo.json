@@ -1,51 +1,50 @@
-[
+var ncip_repos = [
   {
-    "repo": "cagrid",
+    "name": "cagrid",
     "group": "caGrid"
   },
   {
-    "repo": "cagrid-docs",
+    "name": "cagrid-docs",
     "group": "caGrid"
   },
   {
-    "repo": "cagrid-core",
+    "name": "cagrid-core",
     "group": "caGrid"
   },
   {
-    "repo": "cagrid-general",
+    "name": "cagrid-general",
     "group": "caGrid"
   },
   {
-    "repo": "cagrid-portal",
+    "name": "cagrid-portal",
     "group": "caGrid"
   },
   {
-    "repo": "cagrid-workflow",
+    "name": "cagrid-workflow",
     "group": "caGrid"
   },
   {
-    "repo": "grid-incubation",
+    "name": "grid-incubation",
     "group": "caGrid"
   },
   {
-    "repo": "taverna-cagrid",
+    "name": "taverna-cagrid",
     "group": "caGrid"
   },
   {
-    "repo": "caB2B",
+    "name": "caB2B",
     "group": "caGrid"
   },
   {
-    "repo": "cagrid-iphone-app",
+    "name": "cagrid-iphone-app",
     "group": "caGrid"
   },
   {
-    "repo": "catrip",
+    "name": "catrip",
     "group": "caGrid"
   },
   {
-    "repo": "caobr",
+    "name": "caobr",
     "group": "caGrid"
   },
-]
-
+];

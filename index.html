@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <script type="text/javascript" src="ncip-group.json"></script>
+    <script type="text/javascript" src="ncip-repo.json"></script>
     <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -69,8 +71,8 @@
 
       function addGroupRepresentation(group) {
         console.log(group.name);
-        var $item = $("<li>").addClass("group grid-1 " + (repo.language || '').toLowerCase());
-        var $link = $("<a>").attr("href", "http://luisibanez.github.io").appendTo($item);
+        var $item = $("<li>").addClass("repo grid-1 ");
+        var $link = $("<a>").attr("href", "http://github.com").appendTo($item);
         $link.append($("<h2>").text(group.name));
         $link.append($("<p>").text(group.description));
         $item.appendTo("#repos");
@@ -159,26 +161,15 @@
       //  addRepos();
 
       function addGroups(repoGroups) {
-        repoGroups = repoGroups || [];
+        repoGroups = ncip_groups;
 
-        var uri = "ncip-group.json?callback=?";
+        console.log("Hello");
 
-        $.getJSON(uri, function (result) {
-          if (result.data && result.data.length > 0) {
-            repoGroups = repoGroups.concat(result.data);
-            addGroups(repoGroups);
-          }
-          else {
-            $(function () {
-              $("#num-repos").text(repoGroups.length);
+        repoGroups.forEach( function( group ) {
+          console.log(group.name);
+          addGroupRepresentation(group);
+	  });
 
-              $.each(repoGroups.slice(0, 3), function (i, group) {
-                addGroupRepresentation(group);
-              });
-
-            });
-          }
-        })
       }
       addGroups();
 
