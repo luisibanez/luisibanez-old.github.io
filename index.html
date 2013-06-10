@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+
+    <!-- Loading list of repos and groups from JSON files -->
     <script type="text/javascript" src="ncip-group.json"></script>
     <script type="text/javascript" src="ncip-repo.json"></script>
     <script type="text/javascript">
@@ -106,42 +108,6 @@
               // Convert pushed_at to Date.
               $.each(repos, function (i, repo) {
                 repo.pushed_at = new Date(repo.pushed_at);
-
-                var weekHalfLife  = 1.146 * Math.pow(10, -9);
-
-                var pushDelta    = (new Date) - Date.parse(repo.pushed_at);
-                var createdDelta = (new Date) - Date.parse(repo.created_at);
-
-                var weightForPush = 1;
-                var weightForWatchers = 1.314 * Math.pow(10, 7);
-
-                repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
-                repo.hotness += weightForWatchers * repo.watchers / createdDelta;
-                var repoTemperatureColor = Math.floor(255.0*repo.hotness);
-                repo.triangle_color = "#"+(repoTemperatureColor).toString(16)+(102).toString(16)+(102).toString(16);
-                console.log(repo.hotness+repo.triangle_color);
-              });
-
-              // Sort alphabetically by repository name
-              repos.sort(function (a, b) {
-                var namea = a.name.toLowerCase();
-                var nameb = b.name.toLowerCase();
-                if (namea > nameb) return 1;
-                if (nameb > namea) return -1;
-                return 0;
-              });
-
-              $.each(repos, function (i, repo) {
-                var excludeRepo = false;
-                if( repo.name.indexOf("-docs") == repo.name.length - 5 ) {
-                  excludeRepo = true;
-                  }
-                if( repo.name.indexOf("-data") == repo.name.length - 5 ) {
-                  excludeRepo = true;
-                  }
-                if( !excludeRepo ) {
-                  addRepo(repo);
-                  }
               });
 
               // Sort by most-recently pushed to.
@@ -154,11 +120,12 @@
               $.each(repos.slice(0, 3), function (i, repo) {
                 addRecentlyUpdatedRepo(repo);
               });
+
             });
           }
         });
       }
-      //  addRepos();
+      addRepos();
 
       function addGroups(repoGroups) {
         repoGroups = ncip_groups;
@@ -274,12 +241,17 @@
     <div id="wrapper" class="grid clearfix">
       <div id="main" class="grid-1">
         <div id="logo"><h1>NCIP Open Source</h1></div>
-        <h1>NCIP empowers Cancer Research with Open Source</h1>
+        <h2>NCIP empowers Cancer Research with Open Source</h2>
         <p>Visit <a href="http://ncip.nci.nih.gov/">ncip.nci.nih.gov</a></p>
         <p><a href="https://github.com/NCIP/ncip.github.com/wiki/_pages">Wiki Pages</a></p>
       </div>
 
       <div class="grid grid-3">
+        <div id="recently-updated" class="grid-2 omega header">
+          <h1>Recently updated <a href="https://github.com/ncip/repositories">View All on GitHub</a></h1>
+          <ol id="recently-updated-repos"></ol>
+        </div>
+
         <div id="statistics" class="grid-1 alpha header">
           <h1>Statistics</h1>
           <p>
@@ -288,11 +260,6 @@
             <a href="https://github.com/ncip?tab=members"><span id="num-members"><img src="assets/spinner.gif" /></span> members</a>
           </p>
           <p class="email"><a href="mailto:opensource@nci.nih.gov">opensource@nci.nih.gov</a></p>
-        </div>
-
-        <div id="recently-updated" class="grid-2 omega header">
-          <h1>Recently updated <a href="https://github.com/ncip/repositories">View All on GitHub</a></h1>
-          <ol id="recently-updated-repos"></ol>
         </div>
       </div>
 
