@@ -65,6 +65,16 @@ a:hover {
   line-height: 2;
 }
 
+#category, div.categoryheader, li.repo {
+  background: white;
+  background: rgba(255, 255, 255, 0.7);
+  -moz-box-shadow:    0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow:         0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+
 #logo {
   width: 200px;
   height: 200px;
@@ -79,6 +89,14 @@ a:hover {
 
 div.header {
   height: 130px;
+}
+
+div.categoryheader {
+  height: 30px;
+}
+
+div.categoryheader h4 {
+  height: 30px;
 }
 
 div.header h1, div.header p {

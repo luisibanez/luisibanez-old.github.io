@@ -72,7 +72,6 @@
       }
 
       function addGroupRepresentation(group) {
-        console.log(group.name);
         var $item = $("<li>").addClass("repo grid-1 ");
         var $link = $("<a>").attr("href", "http://github.com").appendTo($item);
         $link.append($("<h2>").text(group.name));
@@ -129,8 +128,6 @@
 
       function addGroups(repoGroups) {
         repoGroups = ncip_groups;
-
-        console.log("Hello");
 
         $(function () {
           $.each(repoGroups, function (i, group) {
@@ -260,6 +257,18 @@
             <a href="https://github.com/ncip?tab=members"><span id="num-members"><img src="assets/spinner.gif" /></span> members</a>
           </p>
           <p class="email"><a href="mailto:opensource@nci.nih.gov">opensource@nci.nih.gov</a></p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div id="category" class="grid-1 iota categoryheader">
+          <h4>Cancer Biology and Genomics</h4>
+        </div>
+        <div id="category" class="grid-1 iota categoryheader">
+          <h4>Clinical and Translational</h4>
+        </div>
+        <div id="category" class="grid-1 iota categoryheader">
+          <h4>Semantics and Interoperability</h4>
         </div>
       </div>
 

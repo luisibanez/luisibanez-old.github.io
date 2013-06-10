@@ -16,6 +16,12 @@
   margin-right: 0;
 }
 
+.iota {
+  text-align: center;
+  margin-right: 0;
+  height: 100px;
+}
+
 /* Grid >> 4 Columns */
 
 .grid .grid-1 {
