@@ -10,5 +10,29 @@ var ncip_groups = [
   {
     "name":"caPortals",
     "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
+  },
+  {
+    "name":"caGrid",
+    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines."
+  },
+  {
+    "name":"caTissue",
+    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens."
+  },
+  {
+    "name":"caPortals",
+    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
+  },
+  {
+    "name":"caGrid",
+    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines."
+  },
+  {
+    "name":"caTissue",
+    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens."
+  },
+  {
+    "name":"caPortals",
+    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
   }
 ];

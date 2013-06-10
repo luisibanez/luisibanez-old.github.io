@@ -165,11 +165,11 @@
 
         console.log("Hello");
 
-        repoGroups.forEach( function( group ) {
-          console.log(group.name);
-          addGroupRepresentation(group);
+        $(function () {
+          $.each(repoGroups, function (i, group) {
+            addGroupRepresentation(group);
 	  });
-
+        });
       }
       addGroups();
 
