@@ -1,38 +1,47 @@
 var ncip_groups = [
   {
     "name":"caGrid",
-    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines."
+    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines.",
+    "category":"semantics"
   },
   {
     "name":"caTissue",
-    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens."
+    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens.",
+    "category":"translational"
   },
   {
     "name":"caPortals",
-    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
+    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools.",
+    "category":"biology"
   },
   {
-    "name":"caGrid",
-    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines."
+    "name":"caGrid 2",
+    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines.",
+    "category":"semantics"
   },
   {
-    "name":"caTissue",
-    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens."
+    "name":"caTissue 2",
+    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens.",
+    "category":"translational"
   },
   {
-    "name":"caPortals",
-    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
+    "name":"caPortals 2",
+    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools.",
+    "category":"biology"
   },
   {
-    "name":"caGrid",
-    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines."
+    "name":"caGrid 3",
+    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines.",
+    "category":"semantics"
   },
   {
-    "name":"caTissue",
-    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens."
+    "name":"caTissue 3",
+    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens.",
+    "category":"translational"
   },
   {
-    "name":"caPortals",
-    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools."
+    "name":"caPortals 3",
+    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools.",
+    "category":"biology"
   }
 ];

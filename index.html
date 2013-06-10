@@ -72,7 +72,7 @@
       }
 
       function addGroupRepresentation(group) {
-        var $item = $("<li>").addClass("repo grid-1 ");
+        var $item = $("<li>").addClass("repo grid-1 " + group.category);
         var $link = $("<a>").attr("href", "http://github.com").appendTo($item);
         $link.append($("<h2>").text(group.name));
         $link.append($("<p>").text(group.description));
@@ -261,13 +261,13 @@
       </div>
 
       <div class="grid grid-3">
-        <div id="category" class="grid-1 iota categoryheader">
+        <div id="category" class="grid-1 iota categoryheader biology">
           <h4>Cancer Biology and Genomics</h4>
         </div>
-        <div id="category" class="grid-1 iota categoryheader">
+        <div id="category" class="grid-1 iota categoryheader translational">
           <h4>Clinical and Translational</h4>
         </div>
-        <div id="category" class="grid-1 iota categoryheader">
+        <div id="category" class="grid-1 iota categoryheader semantics">
           <h4>Semantics and Interoperability</h4>
         </div>
       </div>

@@ -65,12 +65,17 @@ a:hover {
   line-height: 2;
 }
 
-#category, div.categoryheader, li.repo {
+#category2, div.categoryheader, li.repo {
   background: white;
   background: rgba(255, 255, 255, 0.7);
   -moz-box-shadow:    0px 0px 5px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
   box-shadow:         0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+#category, div.categoryheader, li.repo {
+  background: white;
   margin-bottom: 20px;
 }
 
@@ -204,16 +209,16 @@ li.repo h3 {
   pointer-events: none;
 }
 
-.repo.javascript:after {
-  border-right-color: #333;
+.repo.biology:after {
+  border-right-color: #0080b0;
 }
 
-.repo.scala:after {
-  border-right-color: #7ac9de;
+.repo.translational:after {
+  border-right-color: #6aad2d;
 }
 
-.repo.ruby:after {
-  border-right-color: #cc1100;
+.repo.semantics:after {
+  border-right-color: #777777;
 }
 
 .repo.java:after {
@@ -222,6 +227,21 @@ li.repo h3 {
 
 .repo.python:after {
   border-right-color: #6aad2d;
+}
+
+.categoryheader.biology {
+  background: #0080b0;
+  color: #0080b0;
+}
+
+div.categoryheader.translational {
+  background: #6aad2d;
+  color: #6aad2d;
+}
+
+div.categoryheader.semantics {
+  background: #777777;
+  color: #777777;
 }
 
 @keyframes small-swing { 0% { margin-top: 0px } 50% { margin-top: -10px } 100% { margin-top: 0px } }
