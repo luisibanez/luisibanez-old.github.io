@@ -26,6 +26,8 @@
         return repoUrls[repo.name] || repo.html_url;
       }
 
+      var reposFromGithub;
+
       // Put custom repo descriptions in this object, keyed by repo name.
       var repoDescriptions = {
         "bootstrap": "An HTML, CSS, and JS toolkit designed to kickstart development of webapps and sites",
@@ -66,13 +68,55 @@
         $item.appendTo("#repos");
       }
 
-      function addRepo(repo) {
+      function addRepo(repo, reposFragment) {
         var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
         $link.append($("<h2>").text(repo.name));
         $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
+        // $item.appendTo(reposFragment);
+        reposFragment.appendChild($item);
+        console.log(repo.name);
       }
+
+      function getReposFromGithub(repos, page) {
+        repos = repos || [];
+        page = page || 1;
+
+        var uri = "https://api.github.com/orgs/ncip/repos?callback=?"
+                + "&per_page=100"
+                + "&page="+page;
+
+        $.getJSON(uri, function (result) {
+          if (result.data && result.data.length > 0) {
+            repos = repos.concat(result.data);
+            getReposFromGithub(repos, page + 1);
+          }
+          else {
+            $(function () {
+              $("#num-repos").text(repos.length);
+
+              // Convert pushed_at to Date.
+              $.each(repos, function (i, repo) {
+                repo.pushed_at = new Date(repo.pushed_at);
+              });
+
+            });
+
+            // Sort alphabetically by repository name
+            repos.sort(function (a, b) {
+              var namea = a.name.toLowerCase();
+              var nameb = b.name.toLowerCase();
+              if (namea > nameb) return 1;
+              if (nameb > namea) return -1;
+              return 0;
+            });
+
+          }
+        });
+      reposFromGithub = repos;
+      console.log("reposFromGithub = " + reposFromGithub.length);
+      }
+      getReposFromGithub();
 
       function addRecentlyUpdatedRepos(repos, page) {
         repos = repos || [];
@@ -114,6 +158,7 @@
       addRecentlyUpdatedRepos();
 
       function addReposFromGroup(repoGroupName) {
+
         console.log("addReposFromGroup");
         console.log(repoGroupName);
 
@@ -130,10 +175,23 @@
         p.appendChild(t);
         reposFragment.appendChild(p);
 
+        $.each(reposFromGithub, function (i, repo) {
+          var excludeRepo = false;
+          if( repo.name.indexOf("-docs") == repo.name.length - 5 ) {
+            excludeRepo = true;
+            }
+          if( repo.name.indexOf("-data") == repo.name.length - 5 ) {
+            excludeRepo = true;
+            }
+          if( !excludeRepo ) {
+            addRepo(repo,reposFragment);
+            }
+        });
+
         console.log(reposFragment);
 
         var oldReposGroupFragment = document.getElementById('repos');
-        oldReposGroupFragment.parentNode.replaceChild(reposFragment,oldReposGroupFragment);
+        // oldReposGroupFragment.parentNode.replaceChild(reposFragment,oldReposGroupFragment);
         }
 
       function addGroups(repoGroups) {
