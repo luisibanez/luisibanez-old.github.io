@@ -60,7 +60,7 @@
 
       function addGroupRepresentation(group) {
         var $item = $("<li>").addClass("repo grid-1 " + group.category);
-        var $link = $("<a>").attr("href", "http://github.com").appendTo($item);
+        var $link = $("<a>").appendTo($item);
         $link.append($("<h2>").text(group.name));
         $link.append($("<p>").text(group.description));
         $item.appendTo("#repos");
@@ -119,8 +119,29 @@
         $(function () {
           $.each(repoGroups, function (i, group) {
             addGroupRepresentation(group);
-	  });
+          });
         });
+
+
+        $(function () {
+
+          function repoGroupHandler() {
+            console.log('Hanlder Here');
+          }
+
+          var $groupsFrameObject = $("#repos");
+          var $groupsFrame = $groupsFrameObject[0];
+
+          if ( document.addEventListener ) {  // W3C
+            $groupsFrame.addEventListener('click', repoGroupHandler, false);
+          } else if( document.attachEvent ) { // IE
+            $groupsFrame.attachEvent('onclick', repoGroupHandler);
+          } else { // last resort
+            $groupsFrame.onclick = repoGroupHandler;
+          }
+
+        });
+
       }
       addGroups();
 
