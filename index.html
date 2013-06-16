@@ -113,6 +113,29 @@
       }
       addRecentlyUpdatedRepos();
 
+      function addReposFromGroup(repoGroupName) {
+        console.log("addReposFromGroup");
+        console.log(repoGroupName);
+
+        var reposFragment = document.createDocumentFragment();
+        var p, t;
+
+        p = document.createElement('p');
+        t = document.createTextNode('first paragraph');
+        p.appendChild(t);
+        reposFragment.appendChild(p);
+
+        p = document.createElement('p');
+        t = document.createTextNode('second paragraph');
+        p.appendChild(t);
+        reposFragment.appendChild(p);
+
+        console.log(reposFragment);
+
+        var oldReposGroupFragment = document.getElementById('repos');
+        oldReposGroupFragment.parentNode.replaceChild(reposFragment,oldReposGroupFragment);
+        }
+
       function addGroups(repoGroups) {
         repoGroups = ncip_groups;
 
@@ -126,14 +149,11 @@
         $(function () {
 
           function repoGroupHandler(repoGroupEvent) {
-            console.log('Hanlder Here');
 
             repoGroupEvent = repoGroupEvent || window.event;
             var sourceElement = repoGroupEvent.target || repoGroupEvent.srcElement;
             var repoGroupElementHeader = sourceElement.parentNode.getElementsByTagName("H2");
             var repoGroupName = repoGroupElementHeader[0].innerText;
-
-            console.log(repoGroupName);
 
             // no bubble
             if ( typeof repoGroupEvent.stopPropagation === "function" ) {
@@ -151,6 +171,7 @@
                 repoGroupEvent.returnValue = false;
             }
 
+            addReposFromGroup(repoGroupName);
           }
 
           var $groupsFrameObject = $("#repos");
