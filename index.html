@@ -125,8 +125,32 @@
 
         $(function () {
 
-          function repoGroupHandler() {
+          function repoGroupHandler(repoGroupEvent) {
             console.log('Hanlder Here');
+
+            repoGroupEvent = repoGroupEvent || window.event;
+            var sourceElement = repoGroupEvent.target || repoGroupEvent.srcElement;
+            var repoGroupElementHeader = sourceElement.parentNode.getElementsByTagName("H2");
+            var repoGroupName = repoGroupElementHeader[0].innerText;
+
+            console.log(repoGroupName);
+
+            // no bubble
+            if ( typeof repoGroupEvent.stopPropagation === "function" ) {
+                repoGroupEvent.stopPropagation();
+            }
+            if ( typeof repoGroupEvent.cancelBubble !== "undefined" ) {
+                repoGroupEvent.cancelBubble = true;
+            }
+
+            // prevent default action
+            if ( typeof repoGroupEvent === "function" ) {
+                repoGroupEvent.preventDefault();
+            }
+            if ( typeof repoGroupEvent.returnValue !== "undefined" ) {
+                repoGroupEvent.returnValue = false;
+            }
+
           }
 
           var $groupsFrameObject = $("#repos");
