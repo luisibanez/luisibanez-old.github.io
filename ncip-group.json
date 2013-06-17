@@ -5,43 +5,73 @@ var ncip_groups = [
     "category":"semantics"
   },
   {
+    "name":"caCORE",
+    "description":"caCore is a...",
+    "category":"semantics"
+  },
+  {
+    "name":"EVS",
+    "description":"EVS is a... ",
+    "category":"semantics"
+  },
+  {
+    "name":"caDSR",
+    "description":"caDSR is a... ",
+    "category":"semantics"
+  },
+  {
+    "name":"caIntegrator Portals",
+    "description":"caIntegrator is a... ",
+    "category":"biology"
+  },
+  {
     "name":"caTissue",
-    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens.",
+    "description":"caTissue is a...",
     "category":"translational"
   },
   {
-    "name":"caPortals",
-    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools.",
-    "category":"biology"
-  },
-  {
-    "name":"caGrid 2",
-    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines.",
+    "name":"cgMDR",
+    "description":"cgMDR is a...",
     "category":"semantics"
   },
   {
-    "name":"caTissue 2",
-    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens.",
-    "category":"translational"
-  },
-  {
-    "name":"caPortals 2",
-    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools.",
+    "name":"Microarray Tools",
+    "description":"Microarray Tools is a...",
     "category":"biology"
   },
   {
-    "name":"caGrid 3",
-    "description":"caGrid is a service-oriented platform that provides tools to integrate data, securely share data, and compose analysis pipelines.",
+    "name":"Clinical Trials",
+    "description":"Clinical Trials is a...",
+    "category":"translational"
+  },
+  {
+    "name":"In vivo imaging",
+    "description":"In vivo imaging is a...",
+    "category":"translational"
+  },
+  {
+    "name":"Proteomics",
+    "description":"Proteomics is a...",
+    "category":"biology"
+  },
+  {
+    "name":"Genomic annotation",
+    "description":"Genomic annotation is a...",
+    "category":"biology"
+  },
+  {
+    "name":"Animal models",
+    "description":"Animal models is a...",
+    "category":"biology"
+  },
+  {
+    "name":"Tissue banking and histopathology",
+    "description":"Tissue banking is a...",
+    "category":"translational"
+  },
+  {
+    "name":"No group tags",
+    "description":"No group tags is a...",
     "category":"semantics"
   },
-  {
-    "name":"caTissue 3",
-    "description":"caTissue is a biospecimen management system that permits users to enter and retrieve  data concerning the collection, storage, quality assurance, and distribution of biospecimens.",
-    "category":"translational"
-  },
-  {
-    "name":"caPortals 3",
-    "description":"Translational research data portals based on the current and previous caIntegrator frameworks and associated tools.",
-    "category":"biology"
-  }
 ];
