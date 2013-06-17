@@ -69,7 +69,6 @@
       }
 
       function addRepo(repo, reposFragment) {
-        console.log(repo.name);
         var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
         $link.append($("<h2>").text(repo.name));
@@ -157,21 +156,7 @@
 
       function addReposFromGroup(repoGroupName) {
 
-        console.log("addReposFromGroup");
-        console.log(repoGroupName);
-
         var reposFragment = document.createDocumentFragment();
-        var p, t;
-
-        p = document.createElement('p');
-        t = document.createTextNode('first paragraph');
-        p.appendChild(t);
-        reposFragment.appendChild(p);
-
-        p = document.createElement('p');
-        t = document.createTextNode('second paragraph');
-        p.appendChild(t);
-        reposFragment.appendChild(p);
 
         $.each(reposFromGithub, function (i, repo) {
           var excludeRepo = false;
@@ -182,19 +167,16 @@
             excludeRepo = true;
             }
 
-          console.log("checking repo "+repo.name);
+          var matchedToGroup = false;
           $.each(ncip_repos, function (i, ncip_repo) {
-            console.log("try repo "+ncip_repo.name);
             if( repo.name === ncip_repo.name ) {
-              console.log("matched name");
-              if( ncip_repo.group !== repoGroupName ) {
-                console.log("unmatched group");
-                excludeRepo = true;
+              if( ncip_repo.group === repoGroupName ) {
+                matchedToGroup = true;
               }
             }
           });
 
-          if( !excludeRepo ) {
+          if( !excludeRepo && matchedToGroup ) {
             addRepo(repo,reposFragment);
             }
         });
