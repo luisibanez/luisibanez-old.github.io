@@ -69,13 +69,12 @@
       }
 
       function addRepo(repo, reposFragment) {
+        console.log(repo.name);
         var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
         $link.append($("<h2>").text(repo.name));
         $link.append($("<p>").text(repoDescription(repo)));
-        // $item.appendTo(reposFragment);
-        reposFragment.appendChild($item);
-        console.log(repo.name);
+        reposFragment.appendChild($item[0]);
       }
 
       function getReposFromGithub(repos, page) {
@@ -114,7 +113,6 @@
           }
         });
       reposFromGithub = repos;
-      console.log("reposFromGithub = " + reposFromGithub.length);
       }
       getReposFromGithub();
 
@@ -183,15 +181,26 @@
           if( repo.name.indexOf("-data") == repo.name.length - 5 ) {
             excludeRepo = true;
             }
+
+          console.log("checking repo "+repo.name);
+          $.each(ncip_repos, function (i, ncip_repo) {
+            console.log("try repo "+ncip_repo.name);
+            if( repo.name === ncip_repo.name ) {
+              console.log("matched name");
+              if( ncip_repo.group !== repoGroupName ) {
+                console.log("unmatched group");
+                excludeRepo = true;
+              }
+            }
+          });
+
           if( !excludeRepo ) {
             addRepo(repo,reposFragment);
             }
         });
 
-        console.log(reposFragment);
-
         var oldReposGroupFragment = document.getElementById('repos');
-        // oldReposGroupFragment.parentNode.replaceChild(reposFragment,oldReposGroupFragment);
+        oldReposGroupFragment.parentNode.replaceChild(reposFragment,oldReposGroupFragment);
         }
 
       function addGroups(repoGroups) {
