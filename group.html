@@ -74,13 +74,11 @@
       }
 
       function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 biology");
-        var $link = $("<a>").attr("href", "http://nci.nih.gov").appendTo($item);
-        // var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        // $link.append($("<h2>").text(repo.name));
-        // $link.append($("<p>").text(repoDescription(repo)));
-        console.log("Adding repo " + repo.name);
-        $item.appendTo("#reposingroup");
+        var $item = $("<li>").addClass("repo grid-1 " + repo.category);
+        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+        $link.append($("<h2>").text(repo.name));
+        $link.append($("<p>").text(repoDescription(repo)));
+        $item.appendTo("#repos");
       }
 
       function getReposFromGithub(repos, page) {
@@ -163,26 +161,26 @@
 
       function addReposFromGroup(repoGroupName) {
 
-        console.log(repoGroupName);
+        $(function () {
 
-        $.each(reposFromGithub, function (i, repo) {
+          $.each(reposFromGithub, function (i, repo) {
 
-          console.log("Is repo " + repo.name + " in group " + repoGroupName +  "?");
+            var matchedToGroup = false;
 
-          var matchedToGroup = false;
-
-          $.each(ncip_repos, function (i, ncip_repo) {
-            if( repo.name === ncip_repo.name ) {
-              if( ncip_repo.group === repoGroupName ) {
-                matchedToGroup = true;
+            $.each(ncip_repos, function (i, ncip_repo) {
+              if( repo.name === ncip_repo.name ) {
+                if( ncip_repo.group === repoGroupName ) {
+                  matchedToGroup = true;
+                }
               }
-            }
+            });
+
+            if( matchedToGroup ) {
+              repo.category = "biology";  // FIXME
+              addRepo(repo);
+              }
           });
 
-          if( matchedToGroup ) {
-            console.log("Yes !");
-            addRepo(repo);
-            }
         });
 
       }
@@ -229,7 +227,7 @@
         </div>
       </div>
 
-      <ol id="reposingroup"></ol>
+      <ol id="repos"></ol>
     </div>
   </body>
 </html>
