@@ -10,6 +10,7 @@
     <!-- Loading list of repos and groups from JSON files -->
     <script type="text/javascript" src="ncip-group.json"></script>
     <script type="text/javascript" src="ncip-repo.json"></script>
+    <script type="text/javascript" src="ncip-repos-details.json"></script>
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
     <script type="text/javascript">
@@ -28,7 +29,7 @@
         return repoUrls[repo.name] || repo.html_url;
       }
 
-      var reposFromGithub;
+      var reposFromGithub = ncip_repos_details;
 
       // Put custom repo descriptions in this object, keyed by repo name.
       var repoDescriptions = {
@@ -105,9 +106,9 @@
 
           }
         });
-      reposFromGithub = repos;
+      // reposFromGithub = repos;
       }
-      getReposFromGithub();
+      // getReposFromGithub();
 
       function addRecentlyUpdatedRepos(repos, page) {
         repos = repos || [];
@@ -149,7 +150,7 @@
       addRecentlyUpdatedRepos();
 
       function addGroups(repoGroups) {
-        repoGroups = ncip_groups;
+        var repoGroups = ncip_groups;
 
         $(function () {
           $.each(repoGroups, function (i, group) {

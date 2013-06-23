@@ -10,6 +10,7 @@
     <!-- Loading list of repos and groups from JSON files -->
     <script type="text/javascript" src="ncip-group.json"></script>
     <script type="text/javascript" src="ncip-repo.json"></script>
+    <script type="text/javascript" src="ncip-repos-details.json"></script>
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
     <script type="text/javascript">
@@ -22,11 +23,23 @@
         "hogan.js": "http://ncip.github.com/hogan.js/"
       };
 
+      function urlQueryString(key) {
+          var vars = [], hash;
+          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+          for(var i = 0; i < hashes.length; i++) {
+              hash = hashes[i].split('=');
+              vars.push(hash[0]);
+              vars[hash[0]] = hash[1];
+          }
+          return vars[key];
+      }
+      var repoGroupName = urlQueryString('name');
+
       function repoUrl(repo) {
         return repoUrls[repo.name] || repo.html_url;
       }
 
-      var reposFromGithub;
+      var reposFromGithub = ncip_repos_details;
 
       // Put custom repo descriptions in this object, keyed by repo name.
       var repoDescriptions = {
@@ -61,11 +74,13 @@
       }
 
       function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
+        var $item = $("<li>").addClass("repo grid-1 biology");
+        var $link = $("<a>").attr("href", "http://nci.nih.gov").appendTo($item);
+        // var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+        // $link.append($("<h2>").text(repo.name));
+        // $link.append($("<p>").text(repoDescription(repo)));
+        console.log("Adding repo " + repo.name);
+        $item.appendTo("#reposingroup");
       }
 
       function getReposFromGithub(repos, page) {
@@ -105,7 +120,7 @@
         });
       reposFromGithub = repos;
       }
-      getReposFromGithub();
+      // getReposFromGithub();
 
       function addRecentlyUpdatedRepos(repos, page) {
         repos = repos || [];
@@ -152,9 +167,9 @@
 
         $.each(reposFromGithub, function (i, repo) {
 
-          var matchedToGroup = false;
+          console.log("Is repo " + repo.name + " in group " + repoGroupName +  "?");
 
-          console.log("trying repo = " + repoGroupName);
+          var matchedToGroup = false;
 
           $.each(ncip_repos, function (i, ncip_repo) {
             if( repo.name === ncip_repo.name ) {
@@ -164,38 +179,14 @@
             }
           });
 
-          console.log(repo+" "+matchedToGroup);
           if( matchedToGroup ) {
+            console.log("Yes !");
             addRepo(repo);
             }
         });
 
       }
-
-      function urlQueryString(key) {
-          var vars = [], hash;
-          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-          for(var i = 0; i < hashes.length; i++) {
-              hash = hashes[i].split('=');
-              vars.push(hash[0]);
-              vars[hash[0]] = hash[1];
-          }
-          return vars[key];
-      }
-
-      var repoGroupName = urlQueryString('name');
-
-      console.log(repoGroupName);
-
       addReposFromGroup(repoGroupName);
-
-      $.getJSON("https://api.github.com/orgs/ncip/members?callback=?", function (result) {
-        var members = result.data;
-
-        $(function () {
-          $("#num-members").text(members.length);
-        });
-      });
 
     })(jQuery);
     </script>
@@ -238,7 +229,7 @@
         </div>
       </div>
 
-      <ol id="repos"></ol>
+      <ol id="reposingroup"></ol>
     </div>
   </body>
 </html>
