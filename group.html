@@ -15,8 +15,6 @@
     <script type="text/javascript">
     (function ($, undefined) {
 
-      var homePageURL = "http://localhost:8000/"; // http://luisibanez.github.io/
-
       // Put custom repo URL's in this object, keyed by repo name.
       var repoUrls = {
         "bootstrap": "http://ncip.github.com/bootstrap/",
@@ -62,11 +60,11 @@
         $item.appendTo("#recently-updated-repos");
       }
 
-      function addGroupRepresentation(group) {
-        var $item = $("<li>").addClass("repo grid-1 " + group.category);
-        var $link = $("<a>").attr("href", homePageURL + "group.html?name=" + group.name).appendTo($item);
-        $link.append($("<h2>").text(group.name));
-        $link.append($("<p>").text(group.description));
+      function addRepo(repo) {
+        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
+        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
+        $link.append($("<h2>").text(repo.name));
+        $link.append($("<p>").text(repoDescription(repo)));
         $item.appendTo("#repos");
       }
 
@@ -148,17 +146,48 @@
       }
       addRecentlyUpdatedRepos();
 
-      function addGroups(repoGroups) {
-        repoGroups = ncip_groups;
+      function addReposFromGroup(repoGroupName) {
 
-        $(function () {
-          $.each(repoGroups, function (i, group) {
-            addGroupRepresentation(group);
+        console.log(repoGroupName);
+
+        $.each(reposFromGithub, function (i, repo) {
+
+          var matchedToGroup = false;
+
+          console.log("trying repo = " + repoGroupName);
+
+          $.each(ncip_repos, function (i, ncip_repo) {
+            if( repo.name === ncip_repo.name ) {
+              if( ncip_repo.group === repoGroupName ) {
+                matchedToGroup = true;
+              }
+            }
           });
+
+          console.log(repo+" "+matchedToGroup);
+          if( matchedToGroup ) {
+            addRepo(repo);
+            }
         });
 
       }
-      addGroups();
+
+      function urlQueryString(key) {
+          var vars = [], hash;
+          var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+          for(var i = 0; i < hashes.length; i++) {
+              hash = hashes[i].split('=');
+              vars.push(hash[0]);
+              vars[hash[0]] = hash[1];
+          }
+          return vars[key];
+      }
+
+      var repoGroupName = urlQueryString('name');
+
+      console.log(repoGroupName);
+
+      addReposFromGroup(repoGroupName);
 
       $.getJSON("https://api.github.com/orgs/ncip/members?callback=?", function (result) {
         var members = result.data;
