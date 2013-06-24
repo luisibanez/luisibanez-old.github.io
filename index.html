@@ -44,7 +44,7 @@
 
       function addGroupRepresentation(group) {
         var $item = $("<li>").addClass("repo grid-1 " + group.category);
-        var $link = $("<a>").attr("href", homePageURL + "group.html?name=" + group.name).appendTo($item);
+        var $link = $("<a>").attr("href", "group.html?name=" + group.name).appendTo($item);
         $link.append($("<h2>").text(group.name));
         $link.append($("<p>").text(group.description));
         $item.appendTo("#repos");
