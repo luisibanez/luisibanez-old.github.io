@@ -18,9 +18,8 @@
 
       // Put custom repo URL's in this object, keyed by repo name.
       var repoUrls = {
-        "bootstrap": "http://ncip.github.com/bootstrap/",
-        "finagle": "http://ncip.github.com/finagle/",
-        "hogan.js": "http://ncip.github.com/hogan.js/"
+        "missing1": "http://ncip.github.com/missing1/",
+        "missing2": "http://ncip.github.com/missing2/"
       };
 
       function urlQueryString(key) {
@@ -43,8 +42,7 @@
 
       // Put custom repo descriptions in this object, keyed by repo name.
       var repoDescriptions = {
-        "bootstrap": "An HTML, CSS, and JS toolkit designed to kickstart development of webapps and sites",
-        "naggati2": "A protocol builder for Netty using Scala 2.8"
+        "missingrepo": "Description of missing repo",
       };
 
       function repoDescription(repo) {
@@ -120,46 +118,9 @@
       }
       // getReposFromGithub();
 
-      function addRecentlyUpdatedRepos(repos, page) {
-        repos = repos || [];
-        page = page || 1;
+      var reposInGroup = [];
 
-        var uri = "https://api.github.com/orgs/ncip/repos?callback=?"
-                + "&per_page=100"
-                + "&page="+page;
-
-        $.getJSON(uri, function (result) {
-          if (result.data && result.data.length > 0) {
-            repos = repos.concat(result.data);
-            addRecentlyUpdatedRepos(repos, page + 1);
-          }
-          else {
-            $(function () {
-              $("#num-repos").text(repos.length);
-
-              // Convert pushed_at to Date.
-              $.each(repos, function (i, repo) {
-                repo.pushed_at = new Date(repo.pushed_at);
-              });
-
-              // Sort by most-recently pushed to.
-              repos.sort(function (a, b) {
-                if (a.pushed_at < b.pushed_at) return 1;
-                if (b.pushed_at < a.pushed_at) return -1;
-                return 0;
-              });
-
-              $.each(repos.slice(0, 3), function (i, repo) {
-                addRecentlyUpdatedRepo(repo);
-              });
-
-            });
-          }
-        });
-      }
-      addRecentlyUpdatedRepos();
-
-      function addReposFromGroup(repoGroupName) {
+      function selectReposFromGroup(repoGroupName) {
 
         $(function () {
 
@@ -176,15 +137,47 @@
             });
 
             if( matchedToGroup ) {
-              repo.category = "biology";  // FIXME
-              addRepo(repo);
+              reposInGroup.push(repo);
               }
           });
 
         });
 
       }
-      addReposFromGroup(repoGroupName);
+      selectReposFromGroup(repoGroupName);
+
+
+      function addRecentlyUpdatedRepos(repos) {
+          $(function () {
+            $("#num-repos").text(repos.length);
+
+            // Convert pushed_at to Date.
+            $.each(repos, function (i, repo) {
+              repo.pushed_at = new Date(repo.pushed_at);
+            });
+
+            // Sort by most-recently pushed to.
+            repos.sort(function (a, b) {
+              if (a.pushed_at < b.pushed_at) return 1;
+              if (b.pushed_at < a.pushed_at) return -1;
+              return 0;
+            });
+
+            $.each(repos.slice(0, 3), function (i, repo) {
+              addRecentlyUpdatedRepo(repo);
+            });
+        });
+      }
+      addRecentlyUpdatedRepos(reposInGroup);
+
+      function addReposFromGroup(listOfRepos) {
+        $(function () {
+          $.each(listOfRepos, function (i, repo) {
+              addRepo(repo);
+              });
+          });
+      }
+      addReposFromGroup(reposInGroup);
 
     })(jQuery);
     </script>
