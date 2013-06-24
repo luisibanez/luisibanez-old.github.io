@@ -122,6 +122,20 @@
 
       function selectReposFromGroup(repoGroupName) {
 
+        var repoGroups = ncip_groups;
+
+        var repoGroup = repoGroups[repoGroupName];
+
+        $(function () {
+          $.each(repoGroups, function (i, group) {
+            if( group.name === repoGroupName ) {
+              repoGroup = group;
+              }
+            });
+        });
+
+        console.log(repoGroup);
+
         $(function () {
 
           $.each(reposFromGithub, function (i, repo) {
@@ -137,6 +151,9 @@
             });
 
             if( matchedToGroup ) {
+              if( !repo.category ) {
+                repo['category'] = repoGroup.category;
+              }
               reposInGroup.push(repo);
               }
           });
