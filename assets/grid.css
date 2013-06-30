@@ -9,11 +9,12 @@
 /* Grid >> Children (Alpha ~ First, Omega ~ Last) */
 
 .alpha {
-  margin-left: 0;
+  margin-left: 10;
+  margin-right: 0;
 }
 
 .omega {
-  margin-right: 0;
+  margin-left: 0;
 }
 
 .iota {
