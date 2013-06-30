@@ -71,7 +71,6 @@ var ncip_groups = [
   },
   {
     "name":"No group tags",
-    "description":"No group tags is a...",
-    "category":"semantics"
+    "description":"No group tags is a..."
   },
 ];

@@ -209,6 +209,10 @@ li.repo h3 {
   pointer-events: none;
 }
 
+.repo:after {
+  border-right-color: #ffffff;
+}
+
 .repo.biology:after {
   border-right-color: #0080b0;
 }
@@ -221,15 +225,7 @@ li.repo h3 {
   border-right-color: #777777;
 }
 
-.repo.java:after {
-  border-right-color: #cc8300;
-}
-
-.repo.python:after {
-  border-right-color: #6aad2d;
-}
-
-.categoryheader.biology {
+div.categoryheader.biology {
   background: #0080b0;
   color: #0080b0;
 }
