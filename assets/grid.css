@@ -15,12 +15,28 @@
 
 .omega {
   margin-left: 0;
+  margin-right: 10;
 }
 
 .iota {
   text-align: center;
-  margin-right: 0;
+  margin-right: 10;
   height: 100px;
+}
+
+.iotaleft {
+  margin-right: 10;
+  margin-left: 0;
+}
+
+.iotacenter {
+  margin-right: 10;
+  margin-left: 20;
+}
+
+.iotaright {
+  margin-right: 0;
+  margin-left: 10;
 }
 
 /* Grid >> 4 Columns */
