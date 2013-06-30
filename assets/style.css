@@ -82,10 +82,8 @@ a:hover {
 
 #logo {
   width: 200px;
-  height: 200px;
+  height: 20;
   margin: 15px 0 0 15px;
-  background: url("logo.png");
-  text-indent: -99999px;
 }
 
 #logo h1 {
