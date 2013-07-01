@@ -70,7 +70,7 @@ var ncip_groups = [
     "category":"translational"
   },
   {
-    "name":"No group tags",
-    "description":"Additional repositories"
+    "name":"Additional repositories",
+    "description":"Repositories that are not categorized into the existing groups"
   },
 ];
