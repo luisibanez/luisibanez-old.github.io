@@ -21,17 +21,17 @@ var ncip_groups = [
   },
   {
     "name":"caIntegrator Portals",
-    "description":"caIntegrator is a... ",
+    "description":"The caIntegrator portals bring together diverse data types for integrative query and analysis.",
     "category":"biology"
   },
   {
     "name":"caTissue",
-    "description":"caTissue is a...",
+    "description":"caTissue is a web-based tool for managing biospecimens.",
     "category":"translational"
   },
   {
     "name":"cgMDR",
-    "description":"cgMDR is a...",
+    "description":"cgMDR (Cancer Grid Metadata Repository) provides a framework for supporting a light weighte ISO 11179 stadards metadata repository.",
     "category":"semantics"
   },
   {
