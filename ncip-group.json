@@ -36,41 +36,41 @@ var ncip_groups = [
   },
   {
     "name":"Microarray Tools",
-    "description":"Microarray Tools is a...",
+    "description":"Tools to support the management and analysis of microarray data",
     "category":"biology"
   },
   {
     "name":"Clinical Trials",
-    "description":"Clinical Trials is a...",
+    "description":"Tools to support clinical trials data collection and management",
     "category":"translational"
   },
   {
     "name":"In vivo imaging",
-    "description":"In vivo imaging is a...",
+    "description":"Tools to support the management and analysis of medical imaging data",
     "category":"translational"
   },
   {
     "name":"Proteomics",
-    "description":"Proteomics is a...",
+    "description":"Tools to support the management and analysis of proteomics data",
     "category":"biology"
   },
   {
     "name":"Genomic annotation",
-    "description":"Genomic annotation is a...",
+    "description":"Tools to support the management and sharing of genomics annotations",
     "category":"biology"
   },
   {
     "name":"Animal models",
-    "description":"Animal models is a...",
+    "description":"Tools to support the collection and management of animal model information",
     "category":"biology"
   },
   {
     "name":"Tissue banking and histopathology",
-    "description":"Tissue banking is a...",
+    "description":"Tools to support the management and sharing of tissue banking and histopathology data",
     "category":"translational"
   },
   {
     "name":"No group tags",
-    "description":"No group tags is a..."
+    "description":"Additional repositories"
   },
 ];
