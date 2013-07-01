@@ -6,17 +6,17 @@ var ncip_groups = [
   },
   {
     "name":"caCORE",
-    "description":"caCore is a...",
+    "description":"caCORE contains tools and APIs that provide the building blocks for the development of interoperable information management systems.",
     "category":"semantics"
   },
   {
     "name":"EVS",
-    "description":"EVS is a... ",
+    "description":"EVS provides tools and services to accurately code, analyze and share cancer and biomedical research, clinical, and public health information.",
     "category":"semantics"
   },
   {
     "name":"caDSR",
-    "description":"caDSR is a... ",
+    "description":"caDSR is a collection of tools for documenting and sharing human- and machine-readable data descriptions.",
     "category":"semantics"
   },
   {
